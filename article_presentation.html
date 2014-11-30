@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Detecting Basic Topological Changes in Sensor Networks by Local Aggregation</title>
+    <meta name="author" content="Matteo Gentile" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/presentation.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<head/>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="title" class="step slide" data-x="0" data-y="0">
+        <div class="presentation_title">
+            <span class="title">Detecting Basic Topological Changes in Sensor Networks by Local Aggregation</span>
+        </div>
+        <div class="title_author"><span class="date">11. 11. 2014</span><span class="slash">/</span><span class="author">Matteo Gentile</span></div>
+    </div>
+
+    <div id="intro" class="step slide" data-x="0" data-y="-1000">
+        <div class="vcenter">
+            <div class="slide-header">WSN</div>
+
+            <div class="slide-content">
+                provide real-time information about geospatial environments and can be used in monitoring geographic phenomena,
+                which can be astracted to evolving areal object.
+                <ul class="lv0_indent">
+                    <li>Floods</li>
+                    <li>Wildfires</li>
+                    <li>Landslides</li>
+                    <li>Toxic gasses concentration</li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-note">
+          The changes in topological structure of areal object are called <em>topological changes</em>
+        </div>
+    </div>
+
+
+    <div id="intro-wildfire" class="step overlay" data-x="0" data-y="-1000" >
+        <div id="mark-wildfire">
+            <div class="mark"></div>
+       </div>
+    </div>
+
+ <div id="change-figure" class="step overlay" data-x="-1250" data-y="-1000" >
+        <div id="change-figure-ctr"></div>
+    </div>
+
+    <div id="data" class="step slide" data-x="-1250" data-y="-2000">
+        <div class="vcenter">
+        <div class="slide-header">Data Report</div>
+
+        <div class="slide-content">
+                reports of the topological changes are generated and transmitted back to the base station
+                as a collection of tuples of form:
+                <div class="formula2" style="color:#93a1a1;">&lt;t, x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, <em>TypeOfChange</em>&gt;</div>
+                  Where:
+                  <ul class="lv0_indent">
+
+                    <li><em >t</em> is the time when the change is detected</li>
+                    <li >(x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>, y<sub>2</sub>) form the selection rectangle that encloses the area subject to change. </li>
+                    <li><em>TypeOfChange </em> indicates the type of topological change (Appear, Merge, etc.)</li>
+                </ul>
+        </div>
+        </div>
+    </div>
+
+<div id="btransiction1" class="step slide" data-x="0" data-y="-2000">
+<div class="vcenter">
+        <div class="slide-header">Basic Transitions</div>
+        <div class="slide-content">
+        An areal objects at a particular time <em>t</em> can be considered as a set of points <em>R</em> in the spatial domain which must have some features:
+             <ul class="lv0_indent">
+                    <li>At a certain time <em>t</em>,  <em>R</em> is assumed to have finite number of regions and each region has zero or a finite number of holes</li>
+                    <li>Regions and holes are two dimensional</li>
+                    <li>An areal object evolves through time</li>
+                    <ul class="lv1_indent">
+                        <li>Sensors take measurements at discrete time, sensing reports are considered to be a sequence of consecutive snapshots</li>
+                        <li>Each pair of consecutive snapshots describes a change, called <em>basic transition.</em>
+                </ul>
+                </ul>
+        </div>
+        </div>
+</div>
+
+<div id="btransiction2" class="step overlay" data-x="0" data-y="-2000">
+<div class="vcenter">
+        <div class="slide-header">Basic Transitions</div>
+        <div class="slide-content" style="background-color:white;">
+        Let <em>R<sub>1</sub></em> and <em>R<sub>2</sub></em> be a pair of areal objects that define a basic transition where R<sub>1</sub> and R<sub>2</sub>
+        are the start and end snapshots respectively. Any location <em>p</em> in the spatial domain must have one of the following four state:
+        <ul class="lv0_indent special">
+                    <li>(I) <em>p</em> &notin; <em>R<sub>1</sub></em> and <em>p</em> &isin; <em>R<sub>2</sub></em></li>
+                    <li>(II) <em>p</em> &isin; <em>R<sub>1</sub></em> and <em>p</em> &notin; <em>R<sub>2</sub></em></li>
+                    <li>(III) <em>p</em> &isin; <em>R<sub>1</sub></em> and <em>p</em> &isin; <em>R<sub>2</sub></em></li>
+                    <li>(IV) <em>p</em> &notin; <em>R<sub>1</sub></em> and <em>p</em> &notin; <em>R<sub>2</sub></em>.</li>
+         </ul>
+         Based on the states of each location, the whole spatial domain can be partitioned into several components. Each component is a maximal topologically connected set
+         of locations in the same state.
+        </div>
+        </div>
+</div>
+
+<div id="topochange-figure" class="step slide" data-x="0" data-y="-2000" >
+<div class="vcenter">
+        <div class="slide-header">Basic Transitions</div>
+        <div class="slide-content" style="background-color:white;">
+        An example of a basic transition:
+        <div id="topochange-figure-ctr"></div>
+        The locations in state I or II form the components that are either added or subtracted from the areal object
+        during the basic transition, these are called <em>transition regions</em>.The locations with state III or IV form the components that do not change during the basic transition.
+    </div>
+    </div>
+    </div>
+
+
+
+    <div id="c-components" class="step slide" data-x="0" data-y="-3000">
+    <div class="vcenter">
+        <div class="slide-header">C-components</div>
+        <div class="slide-content" >
+        Not all components are crucial in the determination of the type of change. Only the components that
+        are adjacent to the transitionregion are necessary.
+        We refer to these components as <em>C-components</em> which have the following properties:
+        <ul class="lv0_indent">
+                  <li>There is exactly one component <em>X</em> which sorrounds all the other C-components
+                  X is called <em>background C-component</em></li>
+                  <li>The topological structure of the C-components can be represented by a rooted tree.</li>
+         </ul>
+         </div>
+        </div>
+    </div>
+
+    <div id="c-components" class="step slide" data-x="0" data-y="-3000">
+    <div class="vcenter">
+        <div class="slide-header">C-components</div>
+        <div class="slide-content" style="background-color:white;">
+        The following figure shows all the rooted trees with less than 4 vertices. The transition region is indicated by shaded area.
+        <div id="trees-figure-ctr"></div>
+
+         </div>
+        </div>
+    </div>
+
+    <div id="classification" class="step slide" data-x="0" data-y="-4000">
+    <div class="vcenter">
+        <div class="slide-header">Classification of topological changes</div>
+        <div class="slide-content" style="background-color:white;">
+
+         </div>
+        </div>
+    </div>
+<!--
+    <div id="example-create-class" class="step slide" data-x="0" data-y="-4000">
+        <div class="slide-header">create new class</div>
+
+        <div class="slide-content">
+            <div id="new-class" class="src-java">
+<pre style="color:#586e75">
+<span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">NewClass</span> {
+    <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">int</span> field;
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">int</span> <span style="color:#268bd2">getField</span>() {
+        <span style="color:#859900">return</span> field;
+    }
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">setField</span>(<span style="color:#073642;font-weight:700">int</span> field) {
+        <span style="color:#268bd2">this</span><span style="color:#859900">.</span>field <span style="color:#859900">=</span> field;
+    }
+}
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="example-final" class="step slide" data-x="0" data-y="-5000">
+        <div class="slide-header">override a private method in a final class</div>
+        <div class="slide-content">
+            <div id="final-class" class="src-java">
+<pre style="color:#586e75">
+<span style="color:#a57800">public</span> <span style="color:#a57800">final</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">FinalClass</span> {
+
+    <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">hardToCallMe</span>() {
+        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>inside hardToCallMe<span style="color:#c60000">"</span></span>);
+    }
+
+    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">callMe</span>() {
+        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>inside callMe<span style="color:#c60000">"</span></span>);
+        hardToCallMe();
+    }
+}
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="good-practises" class="step slide" data-x="0" data-y="-6000">
+        <div class="vcenter">
+            <div class="slide-header">
+                good practices
+            </div>
+
+            <div class="slide-content">
+                <ul class="lv0_indent">
+                    <li>when possible - use higher level libraries (<em>cglib</em>)</li>
+                    <li>write as much as possible in Java (invoke methods in instrumentation code only)</li>
+                    <li>don't write all of ASM code by yourself: write it in pure Java and use <em>javap</em> or <em>ASMifier</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="sources" class="step slide" data-x="0" data-y="-7000">
+        <div class="vcenter">
+            <div class="slide-header">
+                sources
+            </div>
+
+            <div class="slide-content">
+                <ul class="lv0_indent">
+                    <li><a href="http://docs.oracle.com/javase/specs/jvms/se7/html/">JVM specification</a></li>
+                    <li><a href="http://blog.jamesdbloom.com/JVMInternals.html">JVM internals by James Bloom</a></li>
+                    <li><a href="http://asm.ow2.org/">ASM</a></li>
+                    <li><a href="https://github.com/cglib/cglib">cglib</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+
+    <div id="questions" class="step slide" data-x="0" data-y="-8000">
+        <div class="ex-title">questions?</div>
+    </div>
+
+    <div id="thanks" class="step slide" data-x="0" data-y="-9000">
+        <div class="ex-title">thanks!</div>
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+
+<script>
+    if ("ontouchstart" in document.documentElement) {
+            document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+    }
+</script>
+
+
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
