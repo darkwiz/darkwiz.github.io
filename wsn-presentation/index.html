@@ -56,7 +56,7 @@
        </div>
     </div>
 
- <div id="change-figure" class="step overlay" data-x="-1250" data-y="-1000" >
+ <div id="change-figure" class="step slide" data-x="-1250" data-y="-1000" >
         <div id="change-figure-ctr"></div>
     </div>
 
@@ -158,8 +158,84 @@
     <div id="classification" class="step slide" data-x="0" data-y="-4000">
     <div class="vcenter">
         <div class="slide-header">Classification of topological changes</div>
-        <div class="slide-content" style="background-color:white;">
+        <div class="slide-content">
+        The classification of a basic transiction is based on the following three factors:
+        <ul class="lv0_indent" >
+            <li>The topological structure of its C-components</li>
+            <li>The state of the locations in its region</li>
+            <li>The state of the locations in its background C-component</li>
+        </ul>
+This classification yields 13 types of specific topological changes incurred by basic transitions.
+         </div>
+        </div>
+    </div>
 
+<div id="change-13-figure" class="step slide" data-x="-1250" data-y="-4000" data-scale="2">
+        <div id="change-13-figure-ctr"></div>
+ </div>
+
+ <div id="detection" class="step slide" data-x="0" data-y="-5000">
+    <div class="vcenter">
+        <div class="slide-header">Topological change detection</div>
+        <div class="slide-content" >
+        An approach for detecting and classifying topological changes can be defined assuming that:
+        <ul class="lv0_indent" >
+            <li>The reading of a sensor at any of the sample times is either 0 or 1</li>
+            <li>The sensors are densely deployed in the sensing area </li>
+            <li>The sensors are able to communicate with their nearby neighbours</li>
+        </ul>
+         </div>
+        </div>
+    </div>
+
+     <div id="detection-1" class="step overlay" data-x="0" data-y="-5000">
+    <div class="vcenter">
+        <div class="slide-header">Topological change detection</div>
+        <div class="slide-content" style="background-color:white;">
+       We use <em>r<sub>i,t</sub></em> &isin; {0,1} to denote the reading of sensor <em>n<sub>i</sub></em>
+       at time <em>t</em>, and <em>t<sub>0</sub></em>,<em>t<sub>1</sub></em> to denote a pair of consecutive measurement times.
+       The color of node <em>n<sub>i</sub></em> at time <em>t<sub>1</sub></em> is defined to be:
+       <ul class="lv0_indent">
+           <li><b>WHITE</b>, if <em>r<sub>i,t<sub>0</sub></sub></em> = <em>r<sub>i,t<sub>1</sub></sub></em> = 1</li>
+             <li><b>BLACK</b>, if <em>r<sub>i,t<sub>0</sub></sub></em> = <em>r<sub>i,t<sub>1</sub></sub></em> = 0</li>
+             <li><b>GRAY</b>, otherwise.</li>
+       </ul>
+       So by definition all <b>GRAY</b> nodes are located in the transition region.
+
+         </div>
+        </div>
+    </div>
+
+      <div id="detection-2" class="step overlay" data-x="0" data-y="-5000">
+    <div class="vcenter">
+        <div class="slide-header">Topological change detection</div>
+        <div class="slide-content" style="background-color:white;">
+       If the <b>BLACK</b>, or <b>WHITE</b> nodes are within a C-Component then a futher definition can be given. In fact, if a node <em>n</em>
+       is called a <em><b>BLACK</b> C-Component node</em> if  <em><b>n</b></em>:
+       <ul class="lv0_indent special">
+       <li>1. Is <b>BLACK</b></li>
+        <li>2. Is a 1 hop neighbor of a <b>GRAY</b> node or a <b>BLACK</b>  C-component node.</li>
+        </ul>
+       According to this the location of a <em><b>BLACK</b> C-Component node</em> must be in a component adjacent to the transition region.
+       The <em>WHITE</em> C-Component nodes are defined in a similar way.
+         </div>
+        </div>
+    </div>
+
+
+      <div id="detection-3" class="step overlay" data-x="0" data-y="-5000">
+    <div class="vcenter">
+        <div class="slide-header">Topological change detection</div>
+        <div class="slide-content" style="background-color:white;">
+            Is necessary to define other two types of nodes, the <b>BLUE</b> and the <b>RED</b> ones, <em><b>n</b></em> is a:
+             <ul class="lv0_indent">
+                <li><b>BLUE</b> node if it's <b>GRAY</b> and has a <em>k</em>-hop neighbor of a <b>BLACK</b> or a <b>WHITE</b> node</li>
+                <li><b>RED</b> node if it's C-Component node and has a k-hop neighbor that is either of a C-component node with a different
+                reading from <em><b>n</b></em> or a <b>GRAY</b> node.</li>
+            </ul>
+            <em>k</em> &isin; {1,2,..}  is a parameter selected in order to ensure that the <b>RED</b> nodes in the same component
+            form a connected component and the <b>BLUE</b> nodes in the transition region form a connected component as well.
+            <div id="nodes-figure-ctr"></div>
          </div>
         </div>
     </div>
