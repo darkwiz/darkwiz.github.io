@@ -193,8 +193,24 @@ a:focus {
     padding-top: 20px;
 }
 
-.src-java {
-    font-family: monospace;
+.comment {
+    font-size: 18pt;
+    display: block;
+    float: left;
+    width: 300px;
+    left: -10%;
+    color: black;
+    position: relative;
+}
+
+.comment-right {
+    font-size: 18pt;
+    display: block;
+    float: right;
+    width: 300px;
+    right: -15%;
+    color: black;
+    position: relative;
 }
 
 .right {
@@ -295,19 +311,34 @@ sub {
     position: relative;
 }
 
+#mark-nodes3 {
+    position: relative;
+    top: 45%;
+}
+
 .comment {
     font-size: 18pt;
     display: block;
     float: left;
     width: 300px;
-    left: -25%;
+    left: -10%;
+    color: black;
+    position: relative;
+}
+
+.comment .right {
+    font-size: 18pt;
+    display: block;
+    float: left;
+    width: 300px;
+    left: -10%;
     color: black;
     position: relative;
 }
 
 .vcenter {
     position: relative;
-    top: 25%;
+    top: 15%;
 }
 
 #change-figure-ctr {
@@ -344,7 +375,7 @@ sub {
     background-image: url("../img/13_changes.png");
     background-size: 100% 100%;
     opacity: 1;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 #nodes-figure-ctr {
@@ -354,13 +385,26 @@ sub {
     background-image: url("../img/node_deploy.png");
     background-size: 100% 100%;
     opacity: 1;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
-#hex {
+#nodes-figure-2-ctr {
     display: block;
-    font-family: monospace;
-    font-size: 20px;
+    height: 300px;
+    width: 600px;
+    background-image: url("../img/node_deploy2.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
+}
+#nodes-figure-3-ctr {
+    display: block;
+    height: 300px;
+    width: 600px;
+    background-image: url("../img/node_detect.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
 }
 
  .bottom-note {
@@ -378,7 +422,7 @@ sub {
 
 #mark-wildfire {
     position: relative;
-    top: 52%;
+    top: 42%;
     left: -10%;
 }
 
@@ -396,78 +440,6 @@ sub {
 #mark-wildfire1 .mark {
     width: 80px;
     height: 40px;
-}
-
-#mark-return {
-    top: 40%;
-    position: relative;
-}
-
-#mark-return .mark {
-    width: 200px;
-    height: 70px;
-}
-
-#mark-getstatic {
-    top: 64%;
-    position: relative;
-}
-
-#mark-getstatic .mark {
-    width: 370px;
-    height: 70px;
-}
-
-#mark-ldc {
-    top: 70%;
-    position: relative;
-}
-
-#mark-ldc .mark {
-    width: 370px;
-    height: 70px;
-}
-
-#mark-invokevirtual {
-    top: 76%;
-    position: relative;
-}
-
-#mark-invokevirtual .mark {
-    width: 370px;
-    height: 70px;
-}
-
-#class-to-intercept {
-    position: absolute;
-    width: 550px;
-    height: 350px;
-    top: 25%;
-    left: 25%;
-}
-
-#bytecode-sample {
-    position: absolute;
-    width: 550px;
-    height: 350px;
-    top: 25%;
-    left: 25%;
-}
-
-#final-class {
-    position: absolute;
-    width: 700px;
-    height: 350px;
-    top: 25%;
-    left: 200px;
-}
-
-#new-class {
-    position: absolute;
-    width: 550px;
-    height: 350px;
-    top: 25%;
-    left: 25%;
 }
 
 .hint {

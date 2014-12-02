@@ -239,88 +239,127 @@ This classification yields 13 types of specific topological changes incurred by 
          </div>
         </div>
     </div>
-<!--
-    <div id="example-create-class" class="step slide" data-x="0" data-y="-4000">
-        <div class="slide-header">create new class</div>
 
-        <div class="slide-content">
-            <div id="new-class" class="src-java">
-<pre style="color:#586e75">
-<span style="color:#a57800">public</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">NewClass</span> {
-    <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">int</span> field;
-
-    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">int</span> <span style="color:#268bd2">getField</span>() {
-        <span style="color:#859900">return</span> field;
-    }
-
-    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">setField</span>(<span style="color:#073642;font-weight:700">int</span> field) {
-        <span style="color:#268bd2">this</span><span style="color:#859900">.</span>field <span style="color:#859900">=</span> field;
-    }
-}
-</pre>
-            </div>
+    <div id="detection-4" class="step slide" data-x="0" data-y="-5000">
+    <div class="vcenter">
+        <div class="slide-header">Topological change detection</div>
+        <div class="slide-content" style="background-color:white;">
+       Possible assignment of labels to the <b>RED</b> nodes.
+            <div id="nodes-figure-2-ctr"></div>
+         </div>
         </div>
     </div>
 
-    <div id="example-final" class="step slide" data-x="0" data-y="-5000">
-        <div class="slide-header">override a private method in a final class</div>
-        <div class="slide-content">
-            <div id="final-class" class="src-java">
-<pre style="color:#586e75">
-<span style="color:#a57800">public</span> <span style="color:#a57800">final</span> <span style="color:#a57800">class</span> <span style="color:#268bd2">FinalClass</span> {
+<div id="marknodes3" class="step overlay" data-x="0" data-y="-5000">
+        <div id="mark-nodes3">
+            <div class="comment">
 
-    <span style="color:#a57800">private</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">hardToCallMe</span>() {
-        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>inside hardToCallMe<span style="color:#c60000">"</span></span>);
-    }
-
-    <span style="color:#a57800">public</span> <span style="color:#073642;font-weight:700">void</span> <span style="color:#268bd2">callMe</span>() {
-        <span style="color:#073642;font-weight:700">System</span><span style="color:#859900">.</span>out<span style="color:#859900">.</span>println(<span style="color:#269186"><span style="color:#c60000">"</span>inside callMe<span style="color:#c60000">"</span></span>);
-        hardToCallMe();
-    }
-}
-</pre>
-            </div>
-        </div>
-    </div>
-
-    <div id="good-practises" class="step slide" data-x="0" data-y="-6000">
-        <div class="vcenter">
-            <div class="slide-header">
-                good practices
-            </div>
-
-            <div class="slide-content">
-                <ul class="lv0_indent">
-                    <li>when possible - use higher level libraries (<em>cglib</em>)</li>
-                    <li>write as much as possible in Java (invoke methods in instrumentation code only)</li>
-                    <li>don't write all of ASM code by yourself: write it in pure Java and use <em>javap</em> or <em>ASMifier</em></li>
+                <ul>
+                <li>
+               <b>RED</b> nodes located in the same C-Component form one or more clusters.
+                </li>
+                <li>
+                The nodes has the same label IFF they belong to the same cluster.
+                </li>
                 </ul>
             </div>
+       </div>
+    </div>
+
+    <div id="marknodes4" class="step overlay" data-x="0" data-y="-5000">
+        <div id="mark-nodes3">
+            <div class="comment-right">
+
+                <ul>
+                <li>
+               If a pair of nodes labeled <em>l<sub>1</sub></em>, <em>l<sub>2</sub></em>
+               are 1-hop neighbors and have different reading a boundary formed by C-componets passes between them.
+                Then C-components whose label sets contains <em>l<sub>1</sub></em>, <em>l<sub>2</sub></em> are adjacent.</li>
+                </ul>
+            </div>
+       </div>
+    </div>
+
+    <div id="algorithm" class="step slide" data-x="0" data-y="-6000">
+           <div class="vcenter">
+        <div class="slide-header">Algorithm</div>
+          <div class="slide-content" >
+          To collect data to determine the type of change a local aggreagation (LA) method is used which dinamically construct a routing tree
+          among <b>RED</b> and  <b>BLUE</b> nodes in order to gather data to the base station.The detection procedure consist in three
+          phases:
+          <ul class="lv0_indent">
+              <li>Diffusion phase</li>
+              <li>Aggregation phase</li>
+              <li>Analysis phase</li>
+          </ul>
+        </div>
+        </div>
+        </div>
+
+        <div id="diffusion" class="step slide" data-x="0" data-y="-6000">
+           <div class="vcenter">
+        <div class="slide-header">Diffusion Phase</div>
+          <div class="slide-content" >
+          Each node can easily determine whether it is <b>WHITE</b>, <b>BLACK</b> or <b>GRAY</b> node. However, the identification
+          of <b>RED</b> and  <b>BLUE</b> nodes needs the communication among these, and further transmission are needed to
+          assign labels and form clusters. During this phase the <b>GRAY</b> nodes behave differently so they need to be described separately.
+        </div>
+        </div>
+        </div>
+
+        <div id="diffusion-b-gray" class="step overlay" data-x="0" data-y="-6000">
+        <div class="vcenter">
+        <div class="slide-header">Diffusion Phase</div>
+          <div class="slide-content" style="background-color:white;" >
+            <div class="slide-subheader">Gray nodes behavior</div>
+            In this phase <b>GRAY</b> nodes communicate with their neighbors to identify <b>BLUE</b> nodes and one of these is elected
+            to be the repesentative node. A by-product of the election is a routing tree which connects all the <b>BLUE</b> nodes to the representative one.
+            Simplifing the whole process can be described as follows:
+            <ul class="lv0_indent">
+                <li> Node <em>n</em> broadcasts a message <b><em>IS-GRAY</em></b> to its neighbors and waits</li>
+                <li> If  <em>n</em> discovers one of its neighbors is <b>WHITE</b> or <b>BLACK</b> the is upgraded as <b>BLUE</b> node and enters the election procedure. </li>
+            </ul>
+            </div>
         </div>
     </div>
 
-    <div id="sources" class="step slide" data-x="0" data-y="-7000">
+     <div id="diffusion-bl-gray" class="step overlay" data-x="0" data-y="-6000">
         <div class="vcenter">
-            <div class="slide-header">
-                sources
-            </div>
-
-            <div class="slide-content">
-                <ul class="lv0_indent">
-                    <li><a href="http://docs.oracle.com/javase/specs/jvms/se7/html/">JVM specification</a></li>
-                    <li><a href="http://blog.jamesdbloom.com/JVMInternals.html">JVM internals by James Bloom</a></li>
-                    <li><a href="http://asm.ow2.org/">ASM</a></li>
-                    <li><a href="https://github.com/cglib/cglib">cglib</a></li>
-                </ul>
+        <div class="slide-header">Diffusion Phase</div>
+          <div class="slide-content" style="background-color:white;" >
+            <div class="slide-subheader">Black/White nodes behavior</div>
+              The first task of <b>BLACK</b>/<b>WHITE</b> nodes in this phase is the identification of the <b>RED</b> nodes.
+              A <b>BLACK</b>/<b>WHITE</b> node <em>n</em> can be upgraded to a <b>RED</b> if <em>either</em> of the
+              following condition is satisfied:
+              <ul class="lv0_indent special">
+                <li>1. <em>n</em> discovers a 1-hop neighboring <b>GRAY</b> node.</li>
+                <li>2. <em>n</em> discovers a pair of 1-hop neighbors that are <b>BLACK</b> C-component node and <b>WHITE</b>
+                C-component node.
+                </li>
+              </ul>
+              <div id="nodes-figure-3-ctr"></div>
             </div>
         </div>
-    </div> -->
+    </div>
 
-    <div id="questions" class="step slide" data-x="0" data-y="-8000">
+    <div id="diffusion-bl2-gray" class="step overlay" data-x="0" data-y="-6000">
+        <div class="vcenter">
+        <div class="slide-header">Diffusion Phase</div>
+          <div class="slide-content" style="background-color:white;" >
+            <div class="slide-subheader">Black/White nodes behavior</div>
+              In each C-component some of the <b>RED</b> nodes that are identified using codition 1 are randomly selected to be <em>cluster heads</em>.
+              To form clusters, each cluster head initializes a flooding by propagating a cluster call message towards other <b>RED</b> nodes located in the same C-component.
+              Each <b>RED</b> node joins with the same cluster as the sender of the cluster call message it first hears.
+              In this way a routing structure is created and manteined too.
+            </div>
+        </div>
+    </div>
+
+    <div id="questions" class="step slide" data-x="0" data-y="-7000">
         <div class="ex-title">questions?</div>
     </div>
 
-    <div id="thanks" class="step slide" data-x="0" data-y="-9000">
+    <div id="thanks" class="step slide" data-x="0" data-y="-8000">
         <div class="ex-title">thanks!</div>
     </div>
 
