@@ -313,7 +313,7 @@ This classification yields 13 types of specific topological changes incurred by 
           <div class="slide-content" style="background-color:white;" >
             <div class="slide-subheader">Gray nodes behavior</div>
             In this phase <b>GRAY</b> nodes communicate with their neighbors to identify <b>BLUE</b> nodes and one of these is elected
-            to be the repesentative node. A by-product of the election is a routing tree which connects all the <b>BLUE</b> nodes to the representative one.
+            to be the <em>repesentative node</em>. A by-product of the election is a routing tree which connects all the <b>BLUE</b> nodes to the representative one.
             Simplifing the whole process can be described as follows:
             <ul class="lv0_indent">
                 <li> Node <em>n</em> broadcasts a message <b><em>IS-GRAY</em></b> to its neighbors and waits</li>
@@ -347,19 +347,154 @@ This classification yields 13 types of specific topological changes incurred by 
         <div class="slide-header">Diffusion Phase</div>
           <div class="slide-content" style="background-color:white;" >
             <div class="slide-subheader">Black/White nodes behavior</div>
-              In each C-component some of the <b>RED</b> nodes that are identified using codition 1 are randomly selected to be <em>cluster heads</em>.
-              To form clusters, each cluster head initializes a flooding by propagating a cluster call message towards other <b>RED</b> nodes located in the same C-component.
-              Each <b>RED</b> node joins with the same cluster as the sender of the cluster call message it first hears.
-              In this way a routing structure is created and manteined too.
+            <ul class="lv0_indent">
+              <li>In each C-component cluster heads are chosen randomly among the <b>RED</b> nodes identified using the condition 1.</li>
+              <li>To form clusters, each cluster head initializes a flooding propagating a cluster call message (CCM) towards other <b>RED</b> nodes
+              located in the same C-component. Each <b>RED</b> node joins with the same cluster as the sender of the CCM it first hears.</li>
+            </ul>
+              A routing tree is set up within each cluster head and connects all the <b>RED</b> nodes in the cluster. Each cluster head is connected in
+              turn to one of its neighboring <b>BLUE</b> nodes.
             </div>
         </div>
     </div>
 
-    <div id="questions" class="step slide" data-x="0" data-y="-7000">
+
+    <div id="aggregation" class="step slide" data-x="0" data-y="-7000">
+        <div class="vcenter">
+        <div class="slide-header">Aggregation Phase</div>
+          <div class="slide-content" >
+              In this phase, the necessary data, are collected and transmitted back to the representative node.
+              <ul class="lv0_indent">
+              <li>By communicating with its neighbors, a <b>RED</b> node observes the labels of its neighboring <b>RED</b> nodes. It then transmits
+              this set of labels back to the cluster head along the routing tree.
+              </li>
+              <li>
+              During the transmission, the same labels observed by different descendants are suppressed at their common ancestor.
+               When the aggregation finishes, the cluster head knows the labels of its adjacent clusters.
+               </li>
+               <li>
+                 With the routing tree built in each cluster, a bounding box that encloses all the <b>RED</b> nodes in a cluster
+                  can be built at the cluster head.
+               </li>
+               </ul>
+            </div>
+        </div>
+    </div>
+
+<div id="analysis" class="step slide" data-x="0" data-y="-8000">
+        <div class="vcenter">
+        <div class="slide-header">Analysis Phase</div>
+          <div class="slide-content"  >
+              In this phase, the representative node forms the report on the observed topological change based on the cluster level
+              data. Clusters are formed into groups, each group having these properties:
+            <ul class="lv0_indent special">
+              <li>1. All clusters in the same group have the same reading.</li>
+              <li>2. Clusters in the same group are connected with respect
+              to the adjacency relation.</li>
+              <li>3. The group is maximal with respect to properties 1 and 2.</li>
+              </ul>
+              Generally, each group satisfying these properties is formed by clusters that are located in the same C-component,
+              in this way the C-components can be found and represented simply by a set of clusters labels.
+              </div>
+              </div>
+            </div>
+
+        <div id="analysis2" class="step overlay" data-x="0" data-y="-8000">
+        <div class="vcenter">
+        <div class="slide-header">Analysis Phase</div>
+          <div class="slide-content" style="background-color:white;" >
+            <pre>The bounding box associated wit a C-component can be constructed by fusing the
+bounding boxes of the clusters located in the C-component.</pre>
+              The adjacency relations between the C componets can be determined as follows:
+              <ul class="lv0_indent">
+                <li>The background C-component can be found iteratively from the C-components bounding boxes.</li>
+                <li>The type of locations in the transition region can be determined based on the local reading of the repesentative node.</li>
+                <li>The type of the locations in the background C-component can be detected by the readings of the cluster located in it.</li>
+              </ul>
+              Finally the type of topological change can be determined. A report is sent back to the base station from the
+              representative node.
+              </div>
+              </div>
+            </div>
+
+
+      <div id="experiment" class="step slide" data-x="0" data-y="-9000">
+        <div class="vcenter">
+        <div class="slide-header">Experiment</div>
+          <div class="slide-content"  >
+               <p> The experiment was performed through a network simulator based on MATLAB, Prowler, and a sequence of 20 snapshots were generated from time <em>t<sub>1</sub></em> to <em>t<sub>20</sub></em>, which described 19 basic transictions. </p>
+                For comparison, topological changes were detected with LA method and a basic spatial suppression (SS) approach.
+                The latter provides a periodic boundary report, after each sensing round the sensors communicate with their neighbors to identify
+                the boundary nodes. After that the boundary nodes located in the areal object report their IDs back to the BS via the shortest
+                route.
+                <p>It is assumed that the BS knows the location of each sensor</p>
+              </div>
+              </div>
+            </div>
+
+    <div id="result1" class="step slide" data-x="0" data-y="-10000">
+        <div class="vcenter">
+            <div class="slide-header">Results</div>
+            <div class="slide-content" >
+           Considering both approaches, the figure below shows a basic transiction described by the snapshots
+           of areal objects at <em>t<sub>15</sub></em> and <em>t<sub>16</sub></em>.
+                <div id="results1-figure-ctr"></div>
+             </div>
+            </div>
+        </div>
+
+        <div id="result2" class="step overlay" data-x="0" data-y="-10000">
+        <div class="vcenter">
+            <div class="slide-header">Results</div>
+            <div class="slide-content" style="background-color:white;" >
+            By the LA method at time <em>t<sub>16</sub></em> the nodes partecipating in the data aggregation
+            are shown below. The solid circles represent the <b>RED</b> nodes, the squares the <b>BLUE</b> ones.
+                <div id="results2-figure-ctr"></div>
+                The data is first transmitted and aggregated among the <b>RED</b> and <b>BLUE</b> nodes locally, and after
+                that a representative node transmits a single data package to the base station.
+             </div>
+            </div>
+        </div>
+
+        <div id="result3" class="step overlay" data-x="0" data-y="-10000">
+        <div class="vcenter">
+            <div class="slide-header">Results</div>
+            <div class="slide-content" style="background-color:white;" >
+           For the SS method at time <em>t<sub>16</sub></em> the boundary nodes located in the areal object are shown below.
+                <div id="results3-figure-ctr"></div>
+                Each boundary node sends its ID back to the BS.
+             </div>
+            </div>
+        </div>
+
+
+       <div id="results2" class="step slide" data-x="1250" data-y="-10000">
+
+              <div id="results_table-figure-ctr"></div>
+
+      </div>
+
+
+      <div id="discussion" class="step slide" data-x="0" data-y="-11000">
+        <div class="vcenter">
+            <div class="slide-header">Discussion</div>
+            <div class="slide-content" >
+              <p>The communication cost in the LA method is affected by several parameters, the most important is the number of <b>RED</b>
+              nodes. In fact the communication cost in diffusion phase and aggregation phase increases almost linearly with the number of
+              <b>RED</b> nodes identified.</p>
+              Given the same number of <b>RED</b> nodes also the number of clusters formed among the <b>RED</b> nodes affects the communication cost.
+              To estimate the difference is necessary to repeat te experiment in order to obtain a different number of clusters each time. Generally the communication
+              cost in diffusion phase remains stable while the communication cost in aggregation phase increases with the number of clusters.
+               </div>
+            </div>
+        </div>
+
+
+    <div id="questions" class="step slide" data-x="0" data-y="-12000">
         <div class="ex-title">questions?</div>
     </div>
 
-    <div id="thanks" class="step slide" data-x="0" data-y="-8000">
+    <div id="thanks" class="step slide" data-x="0" data-y="-13000">
         <div class="ex-title">thanks!</div>
     </div>
 

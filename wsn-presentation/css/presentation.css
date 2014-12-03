@@ -407,6 +407,44 @@ sub {
     margin: 10px auto;
 }
 
+#results1-figure-ctr {
+    display: block;
+    height: 350px;
+    width: 350px;
+    background-image: url("../img/result1.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
+}
+
+#results2-figure-ctr {
+    display: block;
+    height: 350px;
+    width: 350px;
+    background-image: url("../img/result2.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
+}
+
+#results3-figure-ctr {
+    display: block;
+    height: 350px;
+    width: 350px;
+    background-image: url("../img/result3.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
+}
+#results_table-figure-ctr {
+    display: block;
+    height: 600px;
+    width: 900px;
+    background-image: url("../img/result_table.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
+}
  .bottom-note {
     font-size: 20pt;
     position: relative;
