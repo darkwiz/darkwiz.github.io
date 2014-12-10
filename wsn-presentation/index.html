@@ -134,11 +134,11 @@
         <div class="slide-header">C-components</div>
         <div class="slide-content" >
         Not all components are crucial in the determination of the type of change. Only the components that
-        are adjacent to the transitionregion are necessary.
+        are adjacent to the transition region are necessary.
         We refer to these components as <em>C-components</em> which have the following properties:
         <ul class="lv0_indent">
                   <li>There is exactly one component <em>X</em> which sorrounds all the other C-components
-                  X is called <em>background C-component</em></li>
+                  and is called <em>background C-component</em></li>
                   <li>The topological structure of the C-components can be represented by a rooted tree.</li>
          </ul>
          </div>
@@ -162,7 +162,7 @@
         The classification of a basic transiction is based on the following three factors:
         <ul class="lv0_indent" >
             <li>The topological structure of its C-components</li>
-            <li>The state of the locations in its region</li>
+            <li>The state of the locations in its transition region</li>
             <li>The state of the locations in its background C-component</li>
         </ul>
 This classification yields 13 types of specific topological changes incurred by basic transitions.
@@ -183,6 +183,7 @@ This classification yields 13 types of specific topological changes incurred by 
             <li>The reading of a sensor at any of the sample times is either 0 or 1</li>
             <li>The sensors are densely deployed in the sensing area </li>
             <li>The sensors are able to communicate with their nearby neighbours</li>
+            <li>Each sensor is initialized with a unique ID and knows its position.</li>
         </ul>
          </div>
         </div>
@@ -311,7 +312,7 @@ This classification yields 13 types of specific topological changes incurred by 
         <div class="vcenter">
         <div class="slide-header">Diffusion Phase</div>
           <div class="slide-content" style="background-color:white;" >
-            <div class="slide-subheader">Gray nodes behavior</div>
+            <div class="slide-subheader" style="color:#581d22;">Gray nodes behavior</div>
             In this phase <b>GRAY</b> nodes communicate with their neighbors to identify <b>BLUE</b> nodes and one of these is elected
             to be the <em>repesentative node</em>. A by-product of the election is a routing tree which connects all the <b>BLUE</b> nodes to the representative one.
             Simplifing the whole process can be described as follows:
@@ -327,7 +328,7 @@ This classification yields 13 types of specific topological changes incurred by 
         <div class="vcenter">
         <div class="slide-header">Diffusion Phase</div>
           <div class="slide-content" style="background-color:white;" >
-            <div class="slide-subheader">Black/White nodes behavior</div>
+            <div class="slide-subheader" style="color:#581d22;">Black/White nodes behavior</div>
               The first task of <b>BLACK</b>/<b>WHITE</b> nodes in this phase is the identification of the <b>RED</b> nodes.
               A <b>BLACK</b>/<b>WHITE</b> node <em>n</em> can be upgraded to a <b>RED</b> if <em>either</em> of the
               following condition is satisfied:
@@ -346,7 +347,7 @@ This classification yields 13 types of specific topological changes incurred by 
         <div class="vcenter">
         <div class="slide-header">Diffusion Phase</div>
           <div class="slide-content" style="background-color:white;" >
-            <div class="slide-subheader">Black/White nodes behavior</div>
+            <div class="slide-subheader" style="color:#581d22;">Black/White nodes behavior</div>
             <ul class="lv0_indent">
               <li>In each C-component cluster heads are chosen randomly among the <b>RED</b> nodes identified using the condition 1.</li>
               <li>To form clusters, each cluster head initializes a flooding propagating a cluster call message (CCM) towards other <b>RED</b> nodes
@@ -403,13 +404,13 @@ This classification yields 13 types of specific topological changes incurred by 
         <div class="vcenter">
         <div class="slide-header">Analysis Phase</div>
           <div class="slide-content" style="background-color:white;" >
-            <pre>The bounding box associated wit a C-component can be constructed by fusing the
+            <pre>The bounding box associated with a C-component can be constructed by fusing the
 bounding boxes of the clusters located in the C-component.</pre>
               The adjacency relations between the C componets can be determined as follows:
               <ul class="lv0_indent">
                 <li>The background C-component can be found iteratively from the C-components bounding boxes.</li>
                 <li>The type of locations in the transition region can be determined based on the local reading of the repesentative node.</li>
-                <li>The type of the locations in the background C-component can be detected by the readings of the cluster located in it.</li>
+                <li>The type of the locations in the background C-component can be detected by the readings of the clusters located in it.</li>
               </ul>
               Finally the type of topological change can be determined. A report is sent back to the base station from the
               representative node.
@@ -475,7 +476,7 @@ bounding boxes of the clusters located in the C-component.</pre>
       </div>
 
 
-      <div id="discussion" class="step slide" data-x="0" data-y="-11000">
+      <div id="discussion" class="step slide" data-x="1250" data-y="-11000">
         <div class="vcenter">
             <div class="slide-header">Discussion</div>
             <div class="slide-content" >
@@ -490,11 +491,7 @@ bounding boxes of the clusters located in the C-component.</pre>
         </div>
 
 
-    <div id="questions" class="step slide" data-x="0" data-y="-12000">
-        <div class="ex-title">questions?</div>
-    </div>
-
-    <div id="thanks" class="step slide" data-x="0" data-y="-13000">
+    <div id="thanks" class="step slide" data-x="1250" data-y="-12000">
         <div class="ex-title">thanks!</div>
     </div>
 
