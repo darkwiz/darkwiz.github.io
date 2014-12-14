@@ -445,10 +445,21 @@ sub {
     opacity: 1;
     margin: 10px auto;
 }
+
+#comm_cost-figure-ctr {
+    display: block;
+    height: 300px;
+    width: 700px;
+    background-image: url("../img/comm_cost.png");
+    background-size: 100% 100%;
+    opacity: 1;
+    margin: 10px auto;
+}
+
  .bottom-note {
     font-size: 20pt;
     position: relative;
-    top: 40%;
+    top: 30%;
 }
 
 #mark-default-ctor {
